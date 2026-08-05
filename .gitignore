@@ -1,0 +1,22 @@
+# Generated evidence and reports. Each phase's outputs/ folder is kept in the
+# repo (via .gitkeep) but its contents are not committed by default - pcaps get
+# large, and a capture of your own network traffic is not something to push to
+# a shared remote without thinking about it first.
+#
+# When you DO want to share a specific result with the team (hosts.json and
+# protocol_stats.json are the two Phase 4 needs), force-add it:
+#     git add -f phase1_discovery/outputs/hosts.json
+*/outputs/*
+!*/outputs/.gitkeep
+
+# Captures are big and can contain personal browsing traffic - never commit.
+*.pcap
+*.pcapng
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.idea/
+.vscode/
+~$*.xlsx

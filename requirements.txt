@@ -1,0 +1,20 @@
+# Network Security Assessment - Python dependencies
+# Install with:  pip install -r requirements.txt
+#
+# These are the Python wrappers only. The actual tools (Nmap, Wireshark/TShark,
+# SMAC) are separate installers - see shared/SETUP.md and each phase README.
+
+# Phase 1 - drives the Nmap binary
+python-nmap>=0.7.1
+
+# Phase 2 - parses the .pcap produced by TShark
+pyshark>=0.6
+
+# Phase 4 - analysis, charts, Excel report
+pandas>=2.0
+matplotlib>=3.7
+openpyxl>=3.1
+
+# Optional - only needed if you generate synthetic traffic with scapy in Phase 2.
+# Safe to leave installed; nothing imports it unless you ask for it.
+scapy>=2.5
