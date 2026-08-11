@@ -134,7 +134,7 @@ def hosts_frame(hosts: list[dict]) -> "pd.DataFrame":
         open_ports = [p for p in host.get("ports", []) if p.get("state") == "open"]
         rows.append({
             "ip": host.get("ip"),
-            "team_host": config.host_label(host.get("ip")) or "",
+            "team_host": config.host_label(host.get("ip"), mac=host.get("mac")) or "",
             "hostname": host.get("hostname"),
             "mac": host.get("mac"),
             "vendor": host.get("vendor"),
@@ -153,7 +153,7 @@ def ports_frame(hosts: list[dict]) -> "pd.DataFrame":
         for port in host.get("ports", []):
             rows.append({
                 "ip": host.get("ip"),
-                "team_host": config.host_label(host.get("ip")) or "",
+                "team_host": config.host_label(host.get("ip"), mac=host.get("mac")) or "",
                 "port": port.get("port"),
                 "protocol": port.get("protocol"),
                 "service": port.get("service"),

@@ -65,20 +65,23 @@ CHARTS_DIR = PHASE4_OUTPUTS / "charts"
 # Recorded 2026-08-05: all three laptops sit in 10.25.254.0/24, gateway and
 # DHCP and DNS all on 10.25.254.117. Pinned rather than auto-detected so a
 # laptop that wanders onto another network cannot widen the scan.
-TARGET_NETWORK: str | None = "10.242.170.0/24"
+TARGET_NETWORK: str | None = "10.25.254.0/24"
 
-# The three team laptops, from `ipconfig /all` on each (2026-08-05).
-# `ip` and `mac` are used for labelling the report and for Phase 3's spoofing
-# check, not for scanning - a stale IP costs you a label, not a scan.
+# The three team laptops. The MAC is the stable identity - it is how the report
+# knows whose laptop each scanned host is (see host_label). DHCP hands out a
+# fresh IP every session, so IP is NOT used for matching; the values below are
+# only a last-known hint for the IP fallback and for generate_traffic's ping
+# targets, and are allowed to be stale.
 #
-# NOTE: the DHCP lease here is only 1 hour, so these addresses will drift.
-# Re-check with `ipconfig` and update before the presentation.
+# MACs recorded 2026-08-05 from `ipconfig /all` on each laptop; these do not
+# drift. Jayant's is the one spoofed in Phase 3 - during that demo his laptop
+# will (correctly) stop matching by MAC.
 HOSTS: list[dict] = [
-    {"name": "laptop-1", "owner": "Member 1 (Jay)", "ip": "10.242.170.185",   
+    {"name": "laptop-1", "owner": "Member 1 (Jay)", "ip": "10.25.254.185",
      "mac": "10-68-38-C3-E3-63", "interface": "Wi-Fi"},
-    {"name": "laptop-2", "owner": "Member 2 (Elan)", "ip": "10.242.170.37",
+    {"name": "laptop-2", "owner": "Member 2 (Elan)", "ip": "10.25.254.37",
      "mac": "20-2B-20-C0-D1-29", "interface": "Wi-Fi"},
-    {"name": "laptop-3", "owner": "Member 3 (Jayant)", "ip": "10.242.170.108",
+    {"name": "laptop-3", "owner": "Member 3 (Jayant)", "ip": "10.25.254.108",
      "mac": "B8-1E-A4-34-01-BD", "interface": "Wi-Fi"},
 ]
 
@@ -98,7 +101,7 @@ SPOOF_INTERFACE: str = "Wi-Fi"
 
 # Tool locations. None -> look on PATH, which is right if you accepted the
 # installer defaults. Set an explicit path only if a tool is not on PATH.
-NMAP_PATH: str | None = None
+NMAP_PATH: str | None = str(REPO_ROOT / "nmap.exe")
 TSHARK_PATH: str | None = None
 SMAC_PATH: str | None = r"C:\Program Files\SMAC\smac.exe"
 
@@ -223,14 +226,42 @@ def known_hosts() -> list[dict]:
     return [h for h in HOSTS if h.get("ip") or h.get("mac")]
 
 
-def host_label(ip: str | None) -> str | None:
-    """Friendly '<name> (Member N)' label for one of our own IPs, else None."""
-    if not ip:
+def _mac_key(mac: str | None) -> str | None:
+    """A MAC reduced to a comparable form: separators stripped, lower-cased.
+
+    Nmap emits colon-separated upper-case (AA:BB:...), ipconfig and getmac use
+    dashes (AA-BB-...), and the config may use either. Comparing the raw strings
+    would silently fail and label every host 'unknown', so both sides go through
+    here first.
+    """
+    if not mac:
         return None
-    for host in HOSTS:
-        if host.get("ip") == ip:
-            owner = host.get("owner")
-            return f"{host['name']} ({owner})" if owner else host["name"]
+    key = "".join(ch for ch in str(mac) if ch.isalnum()).lower()
+    return key or None
+
+
+def host_label(ip: str | None = None, mac: str | None = None) -> str | None:
+    """Friendly '<name> (Owner)' label for one of our own laptops, else None.
+
+    Matches by MAC first: DHCP reshuffles IPs between sessions on the hotspot,
+    but the hardware address is stable, so MAC is the reliable identity. Falls
+    back to IP only when the host being looked up has no MAC.
+
+    During the Phase 3 demo Jayant's Wi-Fi MAC is spoofed, so his laptop stops
+    matching by MAC and labels as 'unknown' (or by a stale IP) - that is the
+    expected, whole point of Phase 3, not a lookup bug.
+    """
+    key = _mac_key(mac)
+    if key:
+        for host in HOSTS:
+            if _mac_key(host.get("mac")) == key:
+                owner = host.get("owner")
+                return f"{host['name']} ({owner})" if owner else host["name"]
+    if ip:
+        for host in HOSTS:
+            if host.get("ip") and host["ip"] == ip:
+                owner = host.get("owner")
+                return f"{host['name']} ({owner})" if owner else host["name"]
     return None
 
 
