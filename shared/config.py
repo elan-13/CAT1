@@ -65,7 +65,7 @@ CHARTS_DIR = PHASE4_OUTPUTS / "charts"
 # Recorded 2026-08-05: all three laptops sit in 10.25.254.0/24, gateway and
 # DHCP and DNS all on 10.25.254.117. Pinned rather than auto-detected so a
 # laptop that wanders onto another network cannot widen the scan.
-TARGET_NETWORK: str | None = "10.25.254.0/24"
+TARGET_NETWORK: str | None = "10.242.170.0/24"
 
 # The three team laptops, from `ipconfig /all` on each (2026-08-05).
 # `ip` and `mac` are used for labelling the report and for Phase 3's spoofing
@@ -74,17 +74,17 @@ TARGET_NETWORK: str | None = "10.25.254.0/24"
 # NOTE: the DHCP lease here is only 1 hour, so these addresses will drift.
 # Re-check with `ipconfig` and update before the presentation.
 HOSTS: list[dict] = [
-    {"name": "laptop-1", "owner": "Member 1 (Jay)", "ip": "10.25.254.185",
+    {"name": "laptop-1", "owner": "Member 1 (Jay)", "ip": "10.242.170.185",   
      "mac": "10-68-38-C3-E3-63", "interface": "Wi-Fi"},
-    {"name": "laptop-2", "owner": "Member 2 (Elan)", "ip": "10.25.254.37",
+    {"name": "laptop-2", "owner": "Member 2 (Elan)", "ip": "10.242.170.37",
      "mac": "20-2B-20-C0-D1-29", "interface": "Wi-Fi"},
-    {"name": "laptop-3", "owner": "Member 3 (Jayant)", "ip": "10.25.254.108",
+    {"name": "laptop-3", "owner": "Member 3 (Jayant)", "ip": "10.242.170.108",
      "mac": "B8-1E-A4-34-01-BD", "interface": "Wi-Fi"},
 ]
 
 # Which laptop is running the script. Set this per-machine (or via NSA_THIS_HOST)
 # so Phase 3 knows whose MAC it is looking at. Must match a "name" above.
-THIS_HOST: str = "laptop-3"
+THIS_HOST: str = "laptop-2"
 
 # Adapter used for Phase 2 capture. TShark accepts the friendly name shown by
 # `tshark -D` (e.g. "Wi-Fi", "Ethernet"). None -> capture.py will list the

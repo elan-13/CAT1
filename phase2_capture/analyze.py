@@ -311,6 +311,19 @@ def analyse(pcap: Path, limit: int | None, display_filter: str | None) -> tuple[
     first_epoch: float | None = None
     last_epoch: float | None = None
 
+    # Privacy leak tracking variables
+    http_urls: list[str] = []
+    tls_snis: list[str] = []
+    privacy_telemetry: list[str] = []
+    
+    import re
+    TRACKER_PATTERN = re.compile(
+        r"telemetry|analytics|tracker|doubleclick|adsystem|adsense|google-analytics|"
+        r"app-measurement|adnxs|scorecardresearch|diagnostics|metrics|report|log|stats|"
+        r"beacon|telemetry-service|optimizely|amplitude|mixpanel|segment|crashlytics",
+        re.IGNORECASE
+    )
+
     frame = 0
     try:
         for packet in capture:
@@ -364,6 +377,35 @@ def analyse(pcap: Path, limit: int | None, display_filter: str | None) -> tuple[
             dns_event = collect_dns(packet, frame, timestamp, src, dst)
             if dns_event:
                 dns_events.append(dns_event)
+                if dns_event["direction"] == "query":
+                    qname = dns_event["query"]
+                    if TRACKER_PATTERN.search(qname) and qname not in privacy_telemetry:
+                        privacy_telemetry.append(qname)
+
+            # Extract plaintext HTTP leaks
+            if hasattr(packet, "http"):
+                host = field(packet.http, "host")
+                uri = field(packet.http, "request_uri")
+                method = field(packet.http, "request_method")
+                if host and uri and method:
+                    url = f"{method} http://{host}{uri}"
+                    if url not in http_urls:
+                        http_urls.append(url)
+                    host_str = str(host)
+                    if TRACKER_PATTERN.search(host_str) and host_str not in privacy_telemetry:
+                        privacy_telemetry.append(host_str)
+
+            # Extract plaintext TLS SNI leaks
+            if protocol in ("TLS", "SSL"):
+                tls_layer = getattr(packet, "tls", None) or getattr(packet, "ssl", None)
+                if tls_layer is not None:
+                    sni = field(tls_layer, "handshake_extensions_server_name")
+                    if sni:
+                        sni_str = str(sni)
+                        if sni_str not in tls_snis:
+                            tls_snis.append(sni_str)
+                        if TRACKER_PATTERN.search(sni_str) and sni_str not in privacy_telemetry:
+                            privacy_telemetry.append(sni_str)
 
             if first_ts is None and timestamp:
                 first_ts, first_epoch = timestamp, epoch
@@ -418,6 +460,9 @@ def analyse(pcap: Path, limit: int | None, display_filter: str | None) -> tuple[
         "dns_lookups": [d for d in dns_events if d["direction"] == "query"][:25],
         "dns_responses": [d for d in dns_events if d["direction"] == "response"][:25],
         "dns_lookups_total": sum(1 for d in dns_events if d["direction"] == "query"),
+        "http_leaks": http_urls,
+        "tls_sni_leaks": tls_snis,
+        "privacy_telemetry_leaks": privacy_telemetry,
         "scope": "team-owned laptops on the team's own network",
     }
     return rows, stats
@@ -464,6 +509,40 @@ def report(rows: list[dict], stats: dict) -> None:
                     ["TIME", "CLIENT", "RESOLVER", "QUERY"])
     else:
         warn("none found - run `nslookup example.com` while capturing.")
+
+    step("PRIVACY LEAK ASSESSMENT (Advanced Privacy Profiling)")
+    # 1. Plaintext HTTP leaks
+    http_leaks = stats.get("http_leaks", [])
+    if http_leaks:
+        info("[!] Plaintext HTTP URLs leaked (unencrypted web activity):")
+        for url in http_leaks[:8]:
+            warn(f"  - {url}")
+        if len(http_leaks) > 8:
+            info(f"  ... and {len(http_leaks) - 8} more URLs")
+    else:
+        ok("[+] No plaintext HTTP web URLs leaked in the capture.")
+
+    # 2. TLS SNI leaks
+    tls_leaks = stats.get("tls_sni_leaks", [])
+    if tls_leaks:
+        info("[!] Plaintext TLS SNI Hostnames leaked (revealed before HTTPS encryption starts):")
+        for sni in tls_leaks[:8]:
+            warn(f"  - {sni}")
+        if len(tls_leaks) > 8:
+            info(f"  ... and {len(tls_leaks) - 8} more hostnames")
+    else:
+        ok("[+] No TLS SNI hostnames leaked (no encrypted TLS sessions captured).")
+
+    # 3. Telemetry and Tracking leaks
+    telemetry_leaks = stats.get("privacy_telemetry_leaks", [])
+    if telemetry_leaks:
+        warn(f"[!] Silent Telemetry/Tracker activity detected ({len(telemetry_leaks)} domains):")
+        for domain in telemetry_leaks[:8]:
+            warn(f"  - {domain}  [Telemetry/Tracker]")
+        if len(telemetry_leaks) > 8:
+            info(f"  ... and {len(telemetry_leaks) - 8} more background trackers")
+    else:
+        ok("[+] No background telemetry/trackers detected in the capture.")
 
 
 def main() -> int:
