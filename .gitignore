@@ -20,3 +20,7 @@ venv/
 .idea/
 .vscode/
 ~$*.xlsx
+
+# Local Claude Code config and installed skills (e.g. ui-ux-pro-max) - these are
+# per-machine tooling, not part of the assessment, so they stay out of the repo.
+.claude/

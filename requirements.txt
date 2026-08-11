@@ -15,6 +15,10 @@ pandas>=2.0
 matplotlib>=3.7
 openpyxl>=3.1
 
+# Dashboard - local Flask app that ties the four phases into one live screen
+# (dashboard/app.py). Only Member 3 needs this.
+flask>=2.3
+
 # Optional - only needed if you generate synthetic traffic with scapy in Phase 2.
 # Safe to leave installed; nothing imports it unless you ask for it.
 scapy>=2.5

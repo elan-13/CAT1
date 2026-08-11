@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Network Security Assessment - Live Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+<div class="app">
+
+  <!-- sidebar -------------------------------------------------------- -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <!-- shield icon (inline SVG, no emoji) -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h1>Security Assessment</h1>
+        <p>Live Dashboard</p>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Sections">
+      <a data-nav="overview" class="active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> Overview</a>
+      <a data-nav="phase1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> Phase 1 · Discovery <span class="dot off" data-dot="phase1"></span></a>
+      <a data-nav="phase2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg> Phase 2 · Capture <span class="dot off" data-dot="phase2"></span></a>
+      <a data-nav="phase3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Phase 3 · Spoofing <span class="dot off" data-dot="phase3"></span></a>
+      <a data-nav="phase4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg> Phase 4 · Findings <span class="dot off" data-dot="phase4"></span></a>
+    </nav>
+
+    <div class="foot">
+      Scope: the team's own three laptops on their own network.<br>
+      Read-only for Phases&nbsp;1&nbsp;&amp;&nbsp;2; Phases&nbsp;3&nbsp;&amp;&nbsp;4 run here.
+    </div>
+  </aside>
+
+  <!-- main ----------------------------------------------------------- -->
+  <main class="main">
+    <div class="topbar">
+      <div class="title">
+        <h2 id="section-title">Overview</h2>
+        <p id="section-sub">Live status across all four assessment phases</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="context" id="context">
+        <div class="kv"><span>Network</span><b class="mono" data-ctx="network">…</b></div>
+        <div class="kv"><span>This host</span><b data-ctx="host">…</b></div>
+        <div class="kv"><span>Local IP</span><b class="mono" data-ctx="ip">…</b></div>
+      </div>
+      <div class="live"><span class="pulse"></span><span id="live-text">live</span></div>
+      <button class="icon-btn" id="theme-toggle" title="Toggle light / dark" aria-label="Toggle light or dark theme">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+      </button>
+    </div>
+
+    <div id="sample-banner" class="banner hidden">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+      Showing <b>&nbsp;sample data</b>&nbsp;— regenerate Phase 4 without <code>&nbsp;--sample&nbsp;</code> once real Phase&nbsp;1&nbsp;/&nbsp;2 outputs arrive.
+    </div>
+
+    <!-- Overview ---------------------------------------------------- -->
+    <section data-section="overview">
+      <div class="kpis stagger" id="kpis"></div>
+      <div class="panel">
+        <header><span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><h3>Phase status</h3></header>
+        <div class="body"><div class="table-wrap"><table class="data" id="status-table"></table></div></div>
+      </div>
+    </section>
+
+    <!-- Phase 1 ----------------------------------------------------- -->
+    <section data-section="phase1" class="hidden">
+      <div class="panel">
+        <header>
+          <span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <h3>Discovered hosts</h3>
+          <div class="meta" data-meta="phase1"></div>
+        </header>
+        <div class="body" id="p1-body"></div>
+      </div>
+      <div class="panel">
+        <header><span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="12" y="6" width="3" height="12"/><rect x="17" y="13" width="3" height="5"/></svg></span><h3>Open ports per host</h3></header>
+        <div class="body" id="p1-chart"></div>
+      </div>
+    </section>
+
+    <!-- Phase 2 ----------------------------------------------------- -->
+    <section data-section="phase2" class="hidden">
+      <div class="grid-2">
+        <div class="panel">
+          <header><span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/></svg></span><h3>Protocol distribution</h3><div class="meta" data-meta="phase2"></div></header>
+          <div class="body" id="p2-proto"></div>
+        </div>
+        <div class="panel">
+          <header><span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 6.1H3M21 12.1H3M15.1 18H3"/></svg></span><h3>Top talkers</h3></header>
+          <div class="body" id="p2-talkers"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <header><span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><h3>Evidence — handshake &amp; DNS</h3></header>
+        <div class="body" id="p2-evidence"></div>
+      </div>
+    </section>
+
+    <!-- Phase 3 ----------------------------------------------------- -->
+    <section data-section="phase3" class="hidden">
+      <div class="panel">
+        <header>
+          <span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>
+          <h3>MAC spoofing log</h3>
+          <div class="meta row-actions">
+            <button class="btn sm" data-run="phase3:view">View adapters</button>
+            <button class="btn sm" data-run="phase3:snapshot:before">Snapshot before</button>
+            <button class="btn sm" data-run="phase3:snapshot:after">Snapshot after</button>
+            <button class="btn sm" data-run="phase3:snapshot:restored">Snapshot restored</button>
+            <button class="btn sm" data-run="phase3:verify">Verify</button>
+          </div>
+        </header>
+        <div class="body" id="p3-body"></div>
+      </div>
+    </section>
+
+    <!-- Phase 4 ----------------------------------------------------- -->
+    <section data-section="phase4" class="hidden">
+      <div class="grid-2">
+        <div class="panel">
+          <header>
+            <span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="12" y="6" width="3" height="12"/><rect x="17" y="13" width="3" height="5"/></svg></span>
+            <h3>Findings by severity</h3>
+            <div class="meta row-actions">
+              <button class="btn sm" data-run="phase4:analyze">Re-analyze</button>
+              <button class="btn sm" data-run="phase4:analyze:sample">Sample</button>
+              <button class="btn sm primary" data-run="phase4:report">Build report</button>
+            </div>
+          </header>
+          <div class="body" id="p4-sev"></div>
+        </div>
+        <div class="panel">
+          <header><span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.4 7.6 8 9 4.6-1.4 8-4 8-9V7z"/></svg></span><h3>Recommended firewall rules</h3></header>
+          <div class="body" id="p4-firewall"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <header>
+          <span class="ph-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+          <h3>Findings</h3>
+          <div class="meta" id="p4-filter"></div>
+        </header>
+        <div class="body" id="p4-body"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
