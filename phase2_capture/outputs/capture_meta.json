@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-08-11T20:55:57",
+  "interface_name": "Wi-Fi",
+  "interface_device": "\\Device\\NPF_{2347A5E9-37F1-4D54-BDD2-FC9133B44916}",
+  "duration_requested_s": 60,
+  "packet_limit": null,
+  "capture_filter": null,
+  "elapsed_s": 63.3,
+  "pcap": "D:\\Elan\\Lab\\Data_privacy\\Project\\CAT1\\phase2_capture\\outputs\\capture.pcap",
+  "pcap_bytes": 12967204,
+  "traffic_generated": true,
+  "scope": "team-owned laptops on the team's own network"
+}
