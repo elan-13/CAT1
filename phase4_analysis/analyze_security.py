@@ -393,7 +393,8 @@ def analyse_open_ports(hosts: list[dict], findings: Findings) -> None:
     """Every open port becomes a finding; the risky ones get a real severity."""
     for host in hosts:
         ip = host.get("ip", "unknown")
-        label = config.host_label(ip) or host.get("hostname") or ip
+        label = (config.host_label(ip, mac=host.get("mac"))
+                 or host.get("hostname") or ip)
         asset = f"{ip} ({label})" if label != ip else ip
         open_ports = [p for p in host.get("ports", []) if p.get("state") == "open"]
 
