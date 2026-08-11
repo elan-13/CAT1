@@ -8,6 +8,8 @@
 #     git add -f phase1_discovery/outputs/hosts.json
 */outputs/*
 !*/outputs/.gitkeep
+!*/outputs/*.json
+!*/outputs/*.csv
 
 # Captures are big and can contain personal browsing traffic - never commit.
 *.pcap
