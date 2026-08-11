@@ -1,0 +1,1095 @@
+{
+  "generated_at": "2026-08-11T21:00:21+05:30",
+  "pcap": "D:\\Elan\\Lab\\Data_privacy\\Project\\CAT1\\phase2_capture\\outputs\\capture.pcap",
+  "display_filter": null,
+  "total_packets": 17989,
+  "total_bytes": 12365558,
+  "capture_start": "2026-08-11T20:54:55.046161",
+  "capture_end": "2026-08-11T20:55:54.858586",
+  "duration_seconds": 59.812,
+  "protocol_counts": {
+    "QUIC": 8206,
+    "TCP": 5698,
+    "TCP-DATA": 1885,
+    "TLS": 1149,
+    "ARP": 538,
+    "DNS": 378,
+    "ICMP": 45,
+    "ICMPV6": 40,
+    "NBSS": 30,
+    "HTTP": 5,
+    "DATA-TEXT-LINES": 4,
+    "MALFORMED": 4,
+    "BROWSER": 2,
+    "SMB": 2,
+    "OCSP": 1,
+    "MYSQL": 1,
+    "DCERPC": 1
+  },
+  "protocol_bytes": {
+    "QUIC": 7188492,
+    "TCP": 2658853,
+    "TCP-DATA": 1411564,
+    "TLS": 1025472,
+    "DNS": 42326,
+    "ARP": 22596,
+    "ICMP": 5390,
+    "ICMPV6": 3440,
+    "NBSS": 2912,
+    "MALFORMED": 1368,
+    "HTTP": 914,
+    "OCSP": 778,
+    "BROWSER": 486,
+    "SMB": 444,
+    "DATA-TEXT-LINES": 316,
+    "MYSQL": 129,
+    "DCERPC": 78
+  },
+  "tcp_destination_ports": {
+    "23433": 1450,
+    "443": 1387,
+    "2091": 607,
+    "18018": 187,
+    "53": 140,
+    "28300": 106,
+    "445": 88,
+    "45501": 64,
+    "135": 53,
+    "58505": 36,
+    "80": 31,
+    "14428": 26,
+    "58507": 25,
+    "58510": 25,
+    "49911": 25,
+    "58402": 23,
+    "8710": 23,
+    "6139": 22,
+    "9790": 19,
+    "7528": 19,
+    "5255": 17,
+    "49909": 17,
+    "61920": 16,
+    "32146": 14,
+    "1568": 14
+  },
+  "udp_destination_ports": {
+    "443": 4914,
+    "52921": 1606,
+    "61524": 1282,
+    "53953": 687,
+    "57884": 258,
+    "59558": 241,
+    "57912": 186,
+    "53": 168,
+    "59693": 77,
+    "54579": 60,
+    "61349": 58,
+    "58928": 39,
+    "49683": 38,
+    "56356": 32,
+    "54318": 32,
+    "53550": 25,
+    "59726": 22,
+    "58246": 21,
+    "64265": 21,
+    "64291": 21,
+    "63943": 20,
+    "52177": 19,
+    "49325": 19,
+    "52399": 19,
+    "52594": 17
+  },
+  "top_talkers": [
+    {
+      "ip": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets_sent": 6374,
+      "packets_received": 8092,
+      "bytes_sent": 4123855,
+      "label": null
+    },
+    {
+      "ip": "10.242.170.185",
+      "packets_sent": 2705,
+      "packets_received": 205,
+      "bytes_sent": 154991,
+      "label": "laptop-1 (Member 1 (Jay))"
+    },
+    {
+      "ip": "2405:200:1607:1731::312c:832a",
+      "packets_sent": 2263,
+      "packets_received": 912,
+      "bytes_sent": 2822073,
+      "label": null
+    },
+    {
+      "ip": "2600:140f:5a00::17d4:3748",
+      "packets_sent": 1776,
+      "packets_received": 753,
+      "bytes_sent": 2296288,
+      "label": null
+    },
+    {
+      "ip": "2001:4860:482c:7700::",
+      "packets_sent": 1282,
+      "packets_received": 580,
+      "bytes_sent": 1172609,
+      "label": null
+    },
+    {
+      "ip": "64:ff9b::17de:1f20",
+      "packets_sent": 727,
+      "packets_received": 2684,
+      "bytes_sent": 250415,
+      "label": null
+    },
+    {
+      "ip": "10.242.170.37",
+      "packets_sent": 493,
+      "packets_received": 2475,
+      "bytes_sent": 34956,
+      "label": "laptop-2 (Member 2 (Elan))"
+    },
+    {
+      "ip": "2404:6800:4000:1025::54",
+      "packets_sent": 264,
+      "packets_received": 159,
+      "bytes_sent": 249546,
+      "label": null
+    },
+    {
+      "ip": "10.242.170.120",
+      "packets_sent": 262,
+      "packets_received": 279,
+      "bytes_sent": 30483,
+      "label": null
+    },
+    {
+      "ip": "2404:6800:4007:810::200e",
+      "packets_sent": 241,
+      "packets_received": 162,
+      "bytes_sent": 166937,
+      "label": null
+    },
+    {
+      "ip": "2001:4860:4802:34::9d",
+      "packets_sent": 223,
+      "packets_received": 114,
+      "bytes_sent": 199456,
+      "label": null
+    },
+    {
+      "ip": "2404:6800:4007:815::200e",
+      "packets_sent": 202,
+      "packets_received": 106,
+      "bytes_sent": 182749,
+      "label": null
+    },
+    {
+      "ip": "2a04:4e42:fea::223",
+      "packets_sent": 101,
+      "packets_received": 64,
+      "bytes_sent": 94742,
+      "label": null
+    },
+    {
+      "ip": "2001:4860:4840:400::",
+      "packets_sent": 77,
+      "packets_received": 47,
+      "bytes_sent": 67983,
+      "label": null
+    },
+    {
+      "ip": "2404:6800:4007:838::2001",
+      "packets_sent": 73,
+      "packets_received": 57,
+      "bytes_sent": 39634,
+      "label": null
+    }
+  ],
+  "conversations": [
+    {
+      "a": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "b": "64:ff9b::17de:1f20",
+      "packets": 3411
+    },
+    {
+      "a": "2405:200:1607:1731::312c:832a",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 3175
+    },
+    {
+      "a": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "b": "2600:140f:5a00::17d4:3748",
+      "packets": 2529
+    },
+    {
+      "a": "10.242.170.185",
+      "b": "10.242.170.37",
+      "packets": 2402
+    },
+    {
+      "a": "2001:4860:482c:7700::",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 1862
+    },
+    {
+      "a": "10.242.170.120",
+      "b": "10.242.170.37",
+      "packets": 536
+    },
+    {
+      "a": "2404:6800:4000:1025::54",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 423
+    },
+    {
+      "a": "2404:6800:4007:810::200e",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 403
+    },
+    {
+      "a": "2001:4860:4802:34::9d",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 337
+    },
+    {
+      "a": "2404:6800:4007:815::200e",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 308
+    },
+    {
+      "a": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "b": "2a04:4e42:fea::223",
+      "packets": 165
+    },
+    {
+      "a": "2404:6800:4007:830::2001",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 136
+    },
+    {
+      "a": "2404:6800:4007:838::2001",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 130
+    },
+    {
+      "a": "2001:4860:4840:400::",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 124
+    },
+    {
+      "a": "2404:6800:4007:808::200a",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 110
+    },
+    {
+      "a": "2404:6800:4007:808::200e",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 108
+    },
+    {
+      "a": "2404:6800:4007:83c::200e",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 95
+    },
+    {
+      "a": "2404:6800:4007:800::2003",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 94
+    },
+    {
+      "a": "2404:6800:4007:834::2002",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 93
+    },
+    {
+      "a": "2404:6800:4007:805::200a",
+      "b": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "packets": 83
+    }
+  ],
+  "tcp_handshakes": [
+    {
+      "stream": "8",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2606:4700:83b5:72db:f2c6:43d:ef6b:ff98",
+      "server_port": "80",
+      "client_port": "14427",
+      "syn": {
+        "frame": 123,
+        "timestamp": "2026-08-11T20:55:05.808096"
+      },
+      "syn_ack": {
+        "frame": 125,
+        "timestamp": "2026-08-11T20:55:05.919479"
+      },
+      "ack": {
+        "frame": 127,
+        "timestamp": "2026-08-11T20:55:05.919642"
+      },
+      "service": "http"
+    },
+    {
+      "stream": "9",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2a04:4e42:fea::223",
+      "server_port": "443",
+      "client_port": "14428",
+      "syn": {
+        "frame": 141,
+        "timestamp": "2026-08-11T20:55:06.086851"
+      },
+      "syn_ack": {
+        "frame": 142,
+        "timestamp": "2026-08-11T20:55:06.111392"
+      },
+      "ack": {
+        "frame": 143,
+        "timestamp": "2026-08-11T20:55:06.111476"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "10",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2a04:4e42:25::645",
+      "server_port": "80",
+      "client_port": "14429",
+      "syn": {
+        "frame": 156,
+        "timestamp": "2026-08-11T20:55:06.198156"
+      },
+      "syn_ack": {
+        "frame": 157,
+        "timestamp": "2026-08-11T20:55:06.232474"
+      },
+      "ack": {
+        "frame": 158,
+        "timestamp": "2026-08-11T20:55:06.232634"
+      },
+      "service": "http"
+    },
+    {
+      "stream": "12",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2001:4860:4802:34::9d",
+      "server_port": "443",
+      "client_port": "18018",
+      "syn": {
+        "frame": 718,
+        "timestamp": "2026-08-11T20:55:18.184841"
+      },
+      "syn_ack": {
+        "frame": 727,
+        "timestamp": "2026-08-11T20:55:18.225282"
+      },
+      "ack": {
+        "frame": 728,
+        "timestamp": "2026-08-11T20:55:18.225369"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "13",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2001:4860:4802:34::9d",
+      "server_port": "443",
+      "client_port": "58505",
+      "syn": {
+        "frame": 720,
+        "timestamp": "2026-08-11T20:55:18.185076"
+      },
+      "syn_ack": {
+        "frame": 731,
+        "timestamp": "2026-08-11T20:55:18.229452"
+      },
+      "ack": {
+        "frame": 732,
+        "timestamp": "2026-08-11T20:55:18.229540"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "14",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2606:4700:9c65:72db:f2c6:43e:ef6b:ff98",
+      "server_port": "80",
+      "client_port": "58506",
+      "syn": {
+        "frame": 1639,
+        "timestamp": "2026-08-11T20:55:19.521292"
+      },
+      "syn_ack": {
+        "frame": 1724,
+        "timestamp": "2026-08-11T20:55:19.691868"
+      },
+      "ack": {
+        "frame": 1725,
+        "timestamp": "2026-08-11T20:55:19.692031"
+      },
+      "service": "http"
+    },
+    {
+      "stream": "16",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2a04:4e42:fea::223",
+      "server_port": "443",
+      "client_port": "58507",
+      "syn": {
+        "frame": 1742,
+        "timestamp": "2026-08-11T20:55:19.921362"
+      },
+      "syn_ack": {
+        "frame": 1744,
+        "timestamp": "2026-08-11T20:55:19.956270"
+      },
+      "ack": {
+        "frame": 1745,
+        "timestamp": "2026-08-11T20:55:19.956384"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "962",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2606:4700:9c65:72db:f2c6:43e:ef6b:ff98",
+      "server_port": "80",
+      "client_port": "58508",
+      "syn": {
+        "frame": 4118,
+        "timestamp": "2026-08-11T20:55:32.998358"
+      },
+      "syn_ack": {
+        "frame": 4209,
+        "timestamp": "2026-08-11T20:55:33.246809"
+      },
+      "ack": {
+        "frame": 4210,
+        "timestamp": "2026-08-11T20:55:33.246904"
+      },
+      "service": "http"
+    },
+    {
+      "stream": "1126",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2a04:4e42:fea::223",
+      "server_port": "443",
+      "client_port": "58510",
+      "syn": {
+        "frame": 4290,
+        "timestamp": "2026-08-11T20:55:33.432353"
+      },
+      "syn_ack": {
+        "frame": 4297,
+        "timestamp": "2026-08-11T20:55:33.452005"
+      },
+      "ack": {
+        "frame": 4298,
+        "timestamp": "2026-08-11T20:55:33.452102"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1309",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2405:200:1607:1731::312c:832a",
+      "server_port": "443",
+      "client_port": "32146",
+      "syn": {
+        "frame": 4545,
+        "timestamp": "2026-08-11T20:55:33.958586"
+      },
+      "syn_ack": {
+        "frame": 4597,
+        "timestamp": "2026-08-11T20:55:33.992524"
+      },
+      "ack": {
+        "frame": 4600,
+        "timestamp": "2026-08-11T20:55:33.992673"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1321",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2405:200:1607:1731::312c:832a",
+      "server_port": "443",
+      "client_port": "2091",
+      "syn": {
+        "frame": 4565,
+        "timestamp": "2026-08-11T20:55:33.967728"
+      },
+      "syn_ack": {
+        "frame": 4598,
+        "timestamp": "2026-08-11T20:55:33.992524"
+      },
+      "ack": {
+        "frame": 4601,
+        "timestamp": "2026-08-11T20:55:33.992706"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1320",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2405:200:1607:1731::312c:832a",
+      "server_port": "443",
+      "client_port": "4394",
+      "syn": {
+        "frame": 4564,
+        "timestamp": "2026-08-11T20:55:33.967495"
+      },
+      "syn_ack": {
+        "frame": 4599,
+        "timestamp": "2026-08-11T20:55:33.992524"
+      },
+      "ack": {
+        "frame": 4602,
+        "timestamp": "2026-08-11T20:55:33.992717"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1299",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "64:ff9b::17de:1f20",
+      "server_port": "443",
+      "client_port": "5255",
+      "syn": {
+        "frame": 4525,
+        "timestamp": "2026-08-11T20:55:33.935006"
+      },
+      "syn_ack": {
+        "frame": 4614,
+        "timestamp": "2026-08-11T20:55:33.997431"
+      },
+      "ack": {
+        "frame": 4616,
+        "timestamp": "2026-08-11T20:55:33.997480"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1323",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2405:200:1607:1731::312c:832a",
+      "server_port": "443",
+      "client_port": "61667",
+      "syn": {
+        "frame": 4567,
+        "timestamp": "2026-08-11T20:55:33.968328"
+      },
+      "syn_ack": {
+        "frame": 4627,
+        "timestamp": "2026-08-11T20:55:34.007406"
+      },
+      "ack": {
+        "frame": 4629,
+        "timestamp": "2026-08-11T20:55:34.007458"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1322",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2405:200:1607:1731::312c:832a",
+      "server_port": "443",
+      "client_port": "55860",
+      "syn": {
+        "frame": 4566,
+        "timestamp": "2026-08-11T20:55:33.968155"
+      },
+      "syn_ack": {
+        "frame": 4628,
+        "timestamp": "2026-08-11T20:55:34.007406"
+      },
+      "ack": {
+        "frame": 4630,
+        "timestamp": "2026-08-11T20:55:34.007473"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1325",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2405:200:1607:1731::312c:832a",
+      "server_port": "443",
+      "client_port": "56974",
+      "syn": {
+        "frame": 4569,
+        "timestamp": "2026-08-11T20:55:33.968973"
+      },
+      "syn_ack": {
+        "frame": 4631,
+        "timestamp": "2026-08-11T20:55:34.007666"
+      },
+      "ack": {
+        "frame": 4635,
+        "timestamp": "2026-08-11T20:55:34.007720"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1312",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2600:140f:5a00::17d4:3748",
+      "server_port": "443",
+      "client_port": "61474",
+      "syn": {
+        "frame": 4555,
+        "timestamp": "2026-08-11T20:55:33.961362"
+      },
+      "syn_ack": {
+        "frame": 4632,
+        "timestamp": "2026-08-11T20:55:34.007667"
+      },
+      "ack": {
+        "frame": 4636,
+        "timestamp": "2026-08-11T20:55:34.007737"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1313",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2600:140f:5a00::17d4:3748",
+      "server_port": "443",
+      "client_port": "9763",
+      "syn": {
+        "frame": 4556,
+        "timestamp": "2026-08-11T20:55:33.961491"
+      },
+      "syn_ack": {
+        "frame": 4633,
+        "timestamp": "2026-08-11T20:55:34.007667"
+      },
+      "ack": {
+        "frame": 4637,
+        "timestamp": "2026-08-11T20:55:34.007743"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1317",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2600:140f:5a00::17d4:3748",
+      "server_port": "443",
+      "client_port": "3471",
+      "syn": {
+        "frame": 4560,
+        "timestamp": "2026-08-11T20:55:33.961888"
+      },
+      "syn_ack": {
+        "frame": 4634,
+        "timestamp": "2026-08-11T20:55:34.007667"
+      },
+      "ack": {
+        "frame": 4638,
+        "timestamp": "2026-08-11T20:55:34.007749"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1316",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2600:140f:5a00::17d4:3748",
+      "server_port": "443",
+      "client_port": "23433",
+      "syn": {
+        "frame": 4559,
+        "timestamp": "2026-08-11T20:55:33.961728"
+      },
+      "syn_ack": {
+        "frame": 4639,
+        "timestamp": "2026-08-11T20:55:34.008236"
+      },
+      "ack": {
+        "frame": 4643,
+        "timestamp": "2026-08-11T20:55:34.008543"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1311",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2600:140f:5a00::17d4:3748",
+      "server_port": "443",
+      "client_port": "12971",
+      "syn": {
+        "frame": 4554,
+        "timestamp": "2026-08-11T20:55:33.961220"
+      },
+      "syn_ack": {
+        "frame": 4640,
+        "timestamp": "2026-08-11T20:55:34.008236"
+      },
+      "ack": {
+        "frame": 4644,
+        "timestamp": "2026-08-11T20:55:34.008606"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1315",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2600:140f:5a00::17d4:3748",
+      "server_port": "443",
+      "client_port": "42534",
+      "syn": {
+        "frame": 4558,
+        "timestamp": "2026-08-11T20:55:33.961610"
+      },
+      "syn_ack": {
+        "frame": 4641,
+        "timestamp": "2026-08-11T20:55:34.008237"
+      },
+      "ack": {
+        "frame": 4645,
+        "timestamp": "2026-08-11T20:55:34.008615"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1324",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2405:200:1607:1731::312c:832a",
+      "server_port": "443",
+      "client_port": "30699",
+      "syn": {
+        "frame": 4568,
+        "timestamp": "2026-08-11T20:55:33.968820"
+      },
+      "syn_ack": {
+        "frame": 4642,
+        "timestamp": "2026-08-11T20:55:34.008237"
+      },
+      "ack": {
+        "frame": 4646,
+        "timestamp": "2026-08-11T20:55:34.008623"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1332",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "2600:9000:2571:fc00:1a:20f6:ba40:93a1",
+      "server_port": "443",
+      "client_port": "48370",
+      "syn": {
+        "frame": 4586,
+        "timestamp": "2026-08-11T20:55:33.980594"
+      },
+      "syn_ack": {
+        "frame": 4683,
+        "timestamp": "2026-08-11T20:55:34.021029"
+      },
+      "ack": {
+        "frame": 4685,
+        "timestamp": "2026-08-11T20:55:34.021087"
+      },
+      "service": "https"
+    },
+    {
+      "stream": "1328",
+      "client": "2409:40f4:200f:afab:f1e4:eebc:763b:aad",
+      "server": "64:ff9b::17de:1f20",
+      "server_port": "443",
+      "client_port": "8710",
+      "syn": {
+        "frame": 4575,
+        "timestamp": "2026-08-11T20:55:33.974532"
+      },
+      "syn_ack": {
+        "frame": 4686,
+        "timestamp": "2026-08-11T20:55:34.021126"
+      },
+      "ack": {
+        "frame": 4688,
+        "timestamp": "2026-08-11T20:55:34.021146"
+      },
+      "service": "https"
+    }
+  ],
+  "tcp_handshakes_total": 93,
+  "tcp_handshakes_incomplete": 2020,
+  "dns_lookups": [
+    {
+      "frame": 27,
+      "timestamp": "2026-08-11T20:55:01.574768",
+      "query": "beacons.gcp.gvt2.com",
+      "type": "65",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 28,
+      "timestamp": "2026-08-11T20:55:01.575178",
+      "query": "beacons.gcp.gvt2.com",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 29,
+      "timestamp": "2026-08-11T20:55:01.575486",
+      "query": "beacons.gcp.gvt2.com",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 35,
+      "timestamp": "2026-08-11T20:55:01.597961",
+      "query": "beacons.gcp.gvt2.com",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 37,
+      "timestamp": "2026-08-11T20:55:01.599302",
+      "query": "beacons.gcp.gvt2.com",
+      "type": "65",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 38,
+      "timestamp": "2026-08-11T20:55:01.604928",
+      "query": "beacons.gcp.gvt2.com",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 95,
+      "timestamp": "2026-08-11T20:55:05.405344",
+      "query": "120.170.242.10.in-addr.arpa",
+      "type": "12",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 96,
+      "timestamp": "2026-08-11T20:55:05.425553",
+      "query": "120.170.242.10.in-addr.arpa",
+      "type": "12",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 97,
+      "timestamp": "2026-08-11T20:55:05.427100",
+      "query": "example.com",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 98,
+      "timestamp": "2026-08-11T20:55:05.453448",
+      "query": "example.com",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 99,
+      "timestamp": "2026-08-11T20:55:05.456153",
+      "query": "example.com",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 100,
+      "timestamp": "2026-08-11T20:55:05.492190",
+      "query": "example.com",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 101,
+      "timestamp": "2026-08-11T20:55:05.529541",
+      "query": "120.170.242.10.in-addr.arpa",
+      "type": "12",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 102,
+      "timestamp": "2026-08-11T20:55:05.534774",
+      "query": "120.170.242.10.in-addr.arpa",
+      "type": "12",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 103,
+      "timestamp": "2026-08-11T20:55:05.535833",
+      "query": "wikipedia.org",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 104,
+      "timestamp": "2026-08-11T20:55:05.574609",
+      "query": "wikipedia.org",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 105,
+      "timestamp": "2026-08-11T20:55:05.579742",
+      "query": "wikipedia.org",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 106,
+      "timestamp": "2026-08-11T20:55:05.612859",
+      "query": "wikipedia.org",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 107,
+      "timestamp": "2026-08-11T20:55:05.656767",
+      "query": "120.170.242.10.in-addr.arpa",
+      "type": "12",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 109,
+      "timestamp": "2026-08-11T20:55:05.661840",
+      "query": "120.170.242.10.in-addr.arpa",
+      "type": "12",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 110,
+      "timestamp": "2026-08-11T20:55:05.662426",
+      "query": "python.org",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 111,
+      "timestamp": "2026-08-11T20:55:05.693459",
+      "query": "python.org",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 112,
+      "timestamp": "2026-08-11T20:55:05.696142",
+      "query": "python.org",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 114,
+      "timestamp": "2026-08-11T20:55:05.734468",
+      "query": "python.org",
+      "type": "28",
+      "direction": "query",
+      "client": "10.242.170.120",
+      "server": "10.242.170.37",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    },
+    {
+      "frame": 116,
+      "timestamp": "2026-08-11T20:55:05.789045",
+      "query": "example.com",
+      "type": "1",
+      "direction": "query",
+      "client": "10.242.170.37",
+      "server": "10.242.170.120",
+      "answers": [],
+      "transport": "UDP/53 (unencrypted)"
+    }
+  ],
+  "dns_responses": [],
+  "dns_lookups_total": 378,
+  "scope": "team-owned laptops on the team's own network"
+}
