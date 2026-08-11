@@ -67,7 +67,7 @@ CHARTS_DIR = PHASE4_OUTPUTS / "charts"
 # this laptop's own IP + mask on every run, which is always correct for the
 # hotspot we are actually on. Only pin this if you deliberately need to scan a
 # different range than the one this laptop sits in (or set NSA_TARGET_NETWORK).
-TARGET_NETWORK: str | None = None
+TARGET_NETWORK: str | None = "10.242.170.0/24"
 
 # The three team laptops. The MAC is the stable identity - it is how the report
 # knows whose laptop each scanned host is (see host_label). DHCP hands out a
@@ -103,7 +103,7 @@ SPOOF_INTERFACE: str = "Wi-Fi"
 
 # Tool locations. None -> look on PATH, which is right if you accepted the
 # installer defaults. Set an explicit path only if a tool is not on PATH.
-NMAP_PATH: str | None = None
+NMAP_PATH: str | None = str(REPO_ROOT / "nmap.exe")
 TSHARK_PATH: str | None = None
 SMAC_PATH: str | None = r"C:\Program Files\SMAC\smac.exe"
 
